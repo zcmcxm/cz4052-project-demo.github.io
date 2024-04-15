@@ -36,7 +36,7 @@
               <div class="mainScreen locked">
                 <div class="statusBar">
                   <div class="leftSide">
-                    <div class="operator">Jio</div>
+                    <div class="operator">DemoTel</div>
                     <div class="hour hidden"></div>
                     <div class="widgetPlus"></div>
                   </div>
@@ -62,7 +62,7 @@
                         "
                       ></div>
                     </div>
-                    <div class="exitShake">Done</div>
+                    <!-- <div class="exitShake">Done</div> -->
                   </div>
                 </div>
                 <div class="lockScreen">
@@ -125,8 +125,11 @@
                   <div class="unlockBar" data-msg="Swipe up to Unlock"></div>
                 </div>
 
-                <div class="incomingCall hidden">
-                  <div id="callNotification" class="call-notification hidden">
+                <div class="incomingCall incomingCall1 hidden">
+                  <audio class="music-ring" id="music-ring">
+                    <source src="../assets/phone_ring.mp3" type="audio/mp3" />
+                  </audio>
+                  <div id="callNotification1" class="call-notification hidden">
                     <div class="call-info">
                       <p class="caller-name">Suspicious call</p>
                       <p class="call-type">
@@ -135,22 +138,162 @@
                       </p>
                     </div>
                   </div>
-                  <div id="callerInfo">
-                    <h1>Unknown</h1>
-                    <p id="callStatus">Calling...</p>
-                    <p id="timer" class="timer hidden">00:00</p>
+                  <div class="callerInfo">
+                    <h1>+65 9123 4567</h1>
+                    <p id="callStatus1">Calling...</p>
+                    <p id="timer-1" class="timer-1 hidden">00:00</p>
                   </div>
-                  <div class="unanswered-call">
-                    <button onclick="startCall()">Start Call</button>
+                  <div class="unanswered-call-1">
+                    <!-- <button onclick="startCall1()">Start Call</button> -->
+                    <div onclick="startCall1()" class="sysIcon answer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M22 16.92v3a1.71 1.71 0 0 1-1.85 1.7 17.87 17.87 0 0 1-7.76-3.05 17.94 17.94 0 0 1-6-6 17.87 17.87 0 0 1-3.05-7.76A1.71 1.71 0 0 1 4.11 2h3a1.68 1.68 0 0 1 1.7 1.57c.11 1.21.5 2.33 1.15 3.35a1.78 1.78 0 0 1-.45 2.38l-1.27 1.05a14.46 14.46 0 0 0 5.61 5.61l1.05-1.27a1.78 1.78 0 0 1 2.38-.45c1.02.65 2.14 1.04 3.35 1.15A1.68 1.68 0 0 1 22 16.92z"
+                        ></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="answered-call hidden">
-                    <audio class="music-element" id="music-element">
-                      <source
-                        src="../assets/girl-voice-answering-phone.mp3"
-                        type="audio/mp3"
-                      />
+                  <div class="answered-call-1 hidden">
+                    <audio class="music-1" id="music-1">
+                      <source src="../assets/story_1.mp3" type="audio/mp3" />
                     </audio>
-                    <button onclick="endCall()">Hang Up</button>
+                    <!-- <button onclick="endCall(1)">Hang Up</button> -->
+                    <div onclick="endCall(1)" class="sysIcon hangUp">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="incomingCall incomingCall2 hidden">
+                  <div id="callNotification2" class="call-notification hidden">
+                    <div class="call-info">
+                      <p class="caller-name">
+                        Warning: Suspected Deepfake Call
+                      </p>
+                      <p class="call-type">
+                        Verify caller identity. Do not disclose personal
+                        details.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="callerInfo">
+                    <h1>Tony Stark</h1>
+                    <p id="callStatus2">Calling...</p>
+                    <p id="timer-2" class="timer-2 hidden">00:00</p>
+                  </div>
+                  <div class="unanswered-call-2">
+                    <!-- <button onclick="startCall2()">Start Call</button> -->
+                    <div onclick="startCall2()" class="sysIcon answer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M22 16.92v3a1.71 1.71 0 0 1-1.85 1.7 17.87 17.87 0 0 1-7.76-3.05 17.94 17.94 0 0 1-6-6 17.87 17.87 0 0 1-3.05-7.76A1.71 1.71 0 0 1 4.11 2h3a1.68 1.68 0 0 1 1.7 1.57c.11 1.21.5 2.33 1.15 3.35a1.78 1.78 0 0 1-.45 2.38l-1.27 1.05a14.46 14.46 0 0 0 5.61 5.61l1.05-1.27a1.78 1.78 0 0 1 2.38-.45c1.02.65 2.14 1.04 3.35 1.15A1.68 1.68 0 0 1 22 16.92z"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="answered-call-2 hidden">
+                    <audio class="music-2" id="music-2">
+                      <source src="../assets/story_2.mp3" type="audio/mp3" />
+                    </audio>
+                    <!-- <button onclick="endCall(2)">Hang Up</button> -->
+                    <div onclick="endCall(2)" class="sysIcon hangUp">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="incomingCall incomingCall3 hidden">
+                  <div id="callNotification3" class="call-notification hidden">
+                    <div class="call-info">
+                      <p class="caller-name">
+                        Alert: Scammer Voice Match Detected
+                      </p>
+                      <p class="call-type">
+                        This caller's voice matches a known scam profile. Avoid
+                        sharing personal or financial information.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="callerInfo">
+                    <h1>+65 9765 4321</h1>
+                    <p id="callStatus3">Calling...</p>
+                    <p id="timer-3" class="timer-3 hidden">00:00</p>
+                  </div>
+                  <div class="unanswered-call-3">
+                    <!-- <button onclick="startCall3()">Start Call</button> -->
+                    <div onclick="startCall3()" class="sysIcon answer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M22 16.92v3a1.71 1.71 0 0 1-1.85 1.7 17.87 17.87 0 0 1-7.76-3.05 17.94 17.94 0 0 1-6-6 17.87 17.87 0 0 1-3.05-7.76A1.71 1.71 0 0 1 4.11 2h3a1.68 1.68 0 0 1 1.7 1.57c.11 1.21.5 2.33 1.15 3.35a1.78 1.78 0 0 1-.45 2.38l-1.27 1.05a14.46 14.46 0 0 0 5.61 5.61l1.05-1.27a1.78 1.78 0 0 1 2.38-.45c1.02.65 2.14 1.04 3.35 1.15A1.68 1.68 0 0 1 22 16.92z"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="answered-call-3 hidden">
+                    <audio class="music-3" id="music-3">
+                      <source src="../assets/story_3.mp3" type="audio/mp3" />
+                    </audio>
+                    <!-- <button onclick="endCall(3)">Hang Up</button> -->
+                    <div onclick="endCall(3)" class="sysIcon hangUp">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
 
@@ -633,45 +776,72 @@
           </div>
         </div>
         <div class="interactionInfo hidden">
-          <h1>App demo on iPhone</h1>
+          <h1>Play Around and Explore How Our App Alerts Scams</h1>
           <p>
-            Play around with our interactive iPhone and <b>start the demo</b> to
+            Interact with our iPhone simulator and <b>start the demos</b> to
             experience our app.
+          </p>
+          <p class="important">Turn on the audio to get full experiences.</p>
+
+          <br />
+          <br />
+
+          <h2>Demo Story 1</h2>
+          <p>
+            Late at night, an unknown number calls. The voice on the other end,
+            chillingly artificial, knows too much...
           </p>
           <div class="buttons">
             <div
               class="button buttonStart"
-              data-front="Start Demo"
-              onclick="startStory()"
+              data-front="Start Demo Story 1"
+              onclick="startStory1()"
             ></div>
           </div>
-          <!-- <p>
-            Interactive interface of <b> iPhone 12 </b> with the new
-            <b> iOS 14. </b>
-          </p> -->
+
+          <br />
+          <br />
+
+          <h2>Demo Story 2</h2>
           <p>
-            Some functions are interactive, events have been added to simulate
-            the touch gestures of cell phones, for now it only works on PC.
+            Your phone rings and a voice you trust starts speaking—only,
+            something’s off. This familiar tone is now a weapon, expertly
+            crafted by DeepFake technology to manipulate and deceive.
           </p>
-          <p class="important">
-            The camera app shows its interface and shows the new indicator led
-            for camera and microphone use.
+          <div class="buttons">
+            <div
+              class="button buttonStart"
+              data-front="Start Demo Story 2"
+              onclick="startStory2()"
+            ></div>
+          </div>
+
+          <br />
+          <br />
+
+          <h2>Demo Story 3</h2>
+          <p>
+            The phone rings with a seemingly ordinary call, but the voice on the
+            line matches one recorded in the suspicious voice database. It's a
+            real person, but their intentions are anything but genuine.
           </p>
-          <!-- <div class="buttons">
-        <div class="button buttonTurn" data-front="See Rear" data-back="See Front"></div>
-		<div class="button Logout" data-front="Logout" onclick="myfunc()"></div> -->
-          <!-- </div> -->
-          <p>Among the main features presented are:</p>
+          <div class="buttons">
+            <div
+              class="button buttonStart"
+              data-front="Start Demo Story 3"
+              onclick="startStory3()"
+            ></div>
+          </div>
+
+          <br />
+          <br />
+
+          <h2>What can this iPhone do?</h2>
           <ul>
             <li>Power On/Off through the side button.</li>
             <li>
               The Clock icon, Calendar icon and Calendar Widget on the app
               screen shows accurate time and date.
-            </li>
-            <li>iOS notifications added</li>
-            <li>
-              User can edit home screen and remove apps by pressing an app or
-              any part of the home screen for one second.
             </li>
             <li>
               The battery percentage of the user's device is dispalyed on the
@@ -682,10 +852,20 @@
               activated the drag to the left and right, the
               <b> admin bar </b> has activated the drag down to show the control
               center, the <b> lock screen </b> has activated drag up to unlock
-              the device
+              the device.
             </li>
-            <li>Rear and Front-side look.</li>
           </ul>
+
+          <br />
+          <br />
+
+          <p class="important">
+            iPhone simulator is adapted from
+            <a href="https://github.com/chhavi-garg/iphone-simulator">
+              a great work</a
+            >
+            done by <a href="https://github.com/chhavi-garg">Chhavi Garg</a>.
+          </p>
         </div>
       </div>
     </section>

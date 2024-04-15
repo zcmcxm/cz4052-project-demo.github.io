@@ -5,22 +5,6 @@
     transform: rotate(360deg);
   }
 }
-@keyframes shake {
-  0% {
-    transform: rotate(-2deg);
-  }
-  100% {
-    transform: rotate(2deg);
-  }
-}
-@keyframes shake-2 {
-  0% {
-    transform: rotate(-1deg);
-  }
-  100% {
-    transform: rotate(1deg);
-  }
-}
 @keyframes screenRecord {
   0% {
     opacity: 1;
@@ -524,9 +508,10 @@ body a {
 }
 .iphoneMock .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
+  column-gap: 6rem;
+  align-items: flex-start;
   justify-content: center;
   align-content: center;
   width: 90%;
@@ -620,6 +605,7 @@ body a {
   position: relative;
   user-select: none;
   transition: ease all 1s;
+  margin-top: 3rem;
 }
 .iphoneMock .container .iphone.initAnimation {
   transform: translateY(200px);
@@ -629,11 +615,6 @@ body a {
   transform: rotateY(180deg);
   box-shadow: inset 0 0 7px 1px #fff;
 }
-.iphoneMock .container .iphone.initAnimation .borderColor .backSide {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: all;
-}
 .iphoneMock .container .iphone.powerOn .borderColor .blackBorder .logo {
   opacity: 1;
   transition-delay: 1s;
@@ -641,18 +622,6 @@ body a {
 .iphoneMock .container .iphone.arrhe .borderColor .blackBorder .logo {
   transform: scale(25);
   transition-duration: 0.5s;
-}
-.iphoneMock .container .iphone.showBackSide {
-  transform: translateY(-10px);
-}
-.iphoneMock .container .iphone.showBackSide .borderColor {
-  transform: rotateY(180deg);
-  box-shadow: inset 0 0 7px 1px #fff;
-}
-.iphoneMock .container .iphone.showBackSide .borderColor .backSide {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: all;
 }
 .iphoneMock .container .iphone:before,
 .iphoneMock .container .iphone:after {
@@ -745,156 +714,7 @@ body a {
 .iphoneMock .container .iphone .borderColor .buttons .vol.down {
   top: 210px;
 }
-.iphoneMock .container .iphone .borderColor .backSide {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  position: absolute;
-  width: calc(100% - 12px);
-  height: calc(100% - 12px);
-  border-radius: 40px;
-  background-color: #152839;
-  transform: rotateY(180deg);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  overflow: hidden;
-  transition: ease all 0.3s;
-  z-index: 1000;
-}
-.iphoneMock .container .iphone .borderColor .backSide:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    circle farthest-corner at 245px 0px,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-}
-.iphoneMock .container .iphone .borderColor .backSide .cameras {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  align-content: space-between;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 120px;
-  height: 120px;
-  padding: 10px;
-  border-radius: 25px;
-  box-sizing: border-box;
-  background: linear-gradient(45deg, rgba(0, 0, 0, 0.3), transparent);
-  box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.4);
-}
-.iphoneMock .container .iphone .borderColor .backSide .cameras:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 25px;
-  box-shadow: -10px 0 10px -10px rgba(255, 255, 255, 0.4);
-}
-.iphoneMock .container .iphone .borderColor .backSide .cameras .cam {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  position: relative;
-}
-.iphoneMock
-  .container
-  .iphone
-  .borderColor
-  .backSide
-  .cameras
-  .cam:nth-child(3) {
-  margin: auto 0;
-}
-.iphoneMock .container .iphone .borderColor .backSide .cameras .cam:before,
-.iphoneMock .container .iphone .borderColor .backSide .cameras .cam:after {
-  content: "";
-  position: absolute;
-}
-.iphoneMock .container .iphone .borderColor .backSide .cameras .cam:before {
-  width: calc(100% + 10px);
-  height: calc(100% + 10px);
-  border-radius: 50%;
-  box-shadow: -2px 2px 8px 0 #000;
-  background: linear-gradient(45deg, #152839 65%, rgba(255, 255, 255, 0.5));
-}
-.iphoneMock .container .iphone .borderColor .backSide .cameras .cam:after {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: #1b1b1b;
-  border: 9px solid rgba(0, 0, 0, 0.2);
-  position: relative;
-  box-sizing: border-box;
-}
-.iphoneMock .container .iphone .borderColor .backSide .cameras .cam .lens {
-  position: absolute;
-  width: 25%;
-  height: 25%;
-  border-radius: 50%;
-  box-shadow: inset 2px 0px 4px -4px #fff;
-  background: radial-gradient(
-    ellipse farthest-corner at 8px 2px,
-    #152839,
-    #000
-  );
-  z-index: 1;
-}
-.iphoneMock .container .iphone .borderColor .backSide .cameras .flash,
-.iphoneMock .container .iphone .borderColor .backSide .cameras .sensor {
-  position: absolute;
-  right: 20px;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-}
-.iphoneMock .container .iphone .borderColor .backSide .cameras .flash:before,
-.iphoneMock .container .iphone .borderColor .backSide .cameras .sensor:before {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-}
-.iphoneMock .container .iphone .borderColor .backSide .cameras .flash {
-  top: 5px;
-  background-color: #fff;
-}
-.iphoneMock .container .iphone .borderColor .backSide .cameras .flash:before {
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(#fff291, #ffd5fe);
-}
-.iphoneMock .container .iphone .borderColor .backSide .cameras .sensor {
-  bottom: 5px;
-  background-color: #000;
-}
-.iphoneMock .container .iphone .borderColor .backSide .cameras .sensor:before {
-  top: -3px;
-  right: -7px;
-  width: 3px;
-  height: 3px;
-  background-color: #000;
-}
+
 .iphoneMock .container .iphone .borderColor .blackBorder {
   display: flex;
   flex-direction: row;
@@ -1090,6 +910,9 @@ body a {
 }
 .iphoneMock .container .iphone .borderColor .blackBorder .mainScreen.blur {
   background-image: url(../assets/WallpaperBlur.jpg);
+  background-size: cover; /* Resize the background image to cover the entire container */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat;
   transition-duration: 0.5s;
 }
 .iphoneMock
@@ -1112,26 +935,6 @@ body a {
   .appScreen {
   transform: scale(0.9);
   transition-duration: 0.2s;
-}
-.iphoneMock
-  .container
-  .iphone
-  .borderColor
-  .blackBorder
-  .mainScreen.shakingApps
-  .appScreen
-  .app {
-  animation: shake 0.1s linear alternate infinite;
-}
-.iphoneMock
-  .container
-  .iphone
-  .borderColor
-  .blackBorder
-  .mainScreen.shakingApps
-  .appScreen
-  .app.widgetFull {
-  animation: shake-2 0.1s linear alternate infinite;
 }
 .iphoneMock
   .container
@@ -1241,26 +1044,8 @@ body a {
   .blackBorder
   .mainScreen.shakingApps
   .statusBar
-  .leftSide
-  .exitShake,
-.iphoneMock
-  .container
-  .iphone
-  .borderColor
-  .blackBorder
-  .mainScreen.shakingApps
-  .statusBar
   .rightSide
-  .widgetPlus,
-.iphoneMock
-  .container
-  .iphone
-  .borderColor
-  .blackBorder
-  .mainScreen.shakingApps
-  .statusBar
-  .rightSide
-  .exitShake {
+  .widgetPlus {
   transform: scale(1);
 }
 .iphoneMock
@@ -1963,35 +1748,6 @@ body a {
   .borderColor
   .blackBorder
   .mainScreen
-  .statusBar
-  .rightSide
-  .exitShake {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 40px;
-  height: 17px;
-  font-size: 10px;
-  font-weight: 600;
-  border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.5);
-  transform: scale(0);
-  overflow: hidden;
-  cursor: pointer;
-  transition: ease all 0.2s;
-}
-.iphoneMock
-  .container
-  .iphone
-  .borderColor
-  .blackBorder
-  .mainScreen
   .lockScreen {
   display: flex;
   flex-direction: column;
@@ -2114,15 +1870,7 @@ body a {
   align-content: center;
   width: 100%;
 }
-.iphoneMock
-  .container
-  .iphone
-  .borderColor
-  .blackBorder
-  .mainScreen
-  .lockScreen
-  .down
-  .sysIcon {
+.iphoneMock .container .iphone .borderColor .blackBorder .sysIcon {
   width: 20px;
   height: 20px;
   padding: 10px;
@@ -2131,16 +1879,7 @@ body a {
   color: #fff;
   cursor: pointer;
 }
-.iphoneMock
-  .container
-  .iphone
-  .borderColor
-  .blackBorder
-  .mainScreen
-  .lockScreen
-  .down
-  .sysIcon
-  svg {
+.iphoneMock .container .iphone .borderColor .blackBorder .sysIcon svg {
   width: 100%;
   height: 100%;
 }
@@ -2155,17 +1894,7 @@ body a {
   .sysIcon
   svg
   path,
-.iphoneMock
-  .container
-  .iphone
-  .borderColor
-  .blackBorder
-  .mainScreen
-  .lockScreen
-  .down
-  .sysIcon
-  svg
-  circle {
+.iphoneMock .container .iphone .borderColor .blackBorder .sysIcon svg circle {
   fill: currentColor;
 }
 .iphoneMock
@@ -5710,7 +5439,6 @@ body a {
 
 .interactionInfo {
   color: black;
-  font-weight: 500;
 }
 
 .incomingCall {
@@ -5723,10 +5451,13 @@ body a {
   position: absolute;
   width: 100%;
   height: calc(100% - 25px);
-  padding: 40px;
+  padding-top: 80px;
+  padding-bottom: 80px;
   box-sizing: border-box;
-  transition: ease all 0.5s;
   background-image: url(../assets/WallpaperBlur.jpg);
+  background-size: cover; /* Resize the background image to cover the entire container */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat;
   color: black;
   z-index: 5;
 }
@@ -5735,8 +5466,14 @@ body a {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateY(-100px);
-  transition: ease all 0.5s;
+}
+
+.incomingCall .callerInfo {
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .hidden {
@@ -5745,10 +5482,10 @@ body a {
 
 .call-notification {
   position: absolute;
-  top: -100px; /* Start above the top edge of the viewport */
+  top: -130px; /* Start above the top edge of the viewport */
   left: 0;
   right: 0; /* Ensure full width */
-  background-color: rgba(255, 0, 0, 0.5);
+  background-color: rgba(255, 0, 0, 0.7);
   color: white;
   text-align: center;
   padding: 10px;
@@ -5761,9 +5498,40 @@ body a {
 }
 
 .call-notification.hidden {
-  top: -100px; /* Hide by sliding up */
+  top: -130px; /* Hide by sliding up */
 }
 
 .call-notification.visible {
   top: 0; /* Slide down into visible position */
+}
+
+.iphoneMock
+  .container
+  .iphone
+  .borderColor
+  .blackBorder
+  .incomingCall
+  .sysIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.iphoneMock
+  .container
+  .iphone
+  .borderColor
+  .blackBorder
+  .incomingCall
+  .sysIcon.answer {
+  background-color: rgba(65, 179, 73, 1);
+}
+
+.iphoneMock
+  .container
+  .iphone
+  .borderColor
+  .blackBorder
+  .incomingCall
+  .sysIcon.hangUp {
+  background-color: rgba(238, 63, 77, 1);
 }

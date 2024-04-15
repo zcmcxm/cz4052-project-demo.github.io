@@ -471,88 +471,6 @@ ${
     }
     container.append(html);
   }
-  function alertiOS(config) {
-    if ($("#iOSAlert").length || $(".mainScreen").hasClass("locked"))
-      return false;
-    config = jQuery.extend(
-      {
-        wrapper: $(".iphone .blackBorder"),
-        actions: [
-          {
-            text: "Accept",
-            warning: true,
-            // callback: function(){console.log('callback accept')}
-          },
-          {
-            text: "Cancel",
-            warning: false,
-            // callback: function () { console.log('callback cancel') }
-          },
-        ],
-        closable: false,
-        closeOnActions: true,
-
-        hide: false,
-      },
-      config
-    );
-    var actions = "";
-    if (config.actions) {
-      $.each(config.actions, function (k, action) {
-        actions += `<div class="action ${action.warning ? "warning" : ""}">${
-          action.text
-        }</div>`;
-      });
-    }
-    if (config.hide) {
-      $(document).off("click", "#iOSAlert .action");
-      $("#iOSAlert").fadeOut(function () {
-        $(this).remove();
-      });
-      return false;
-    }
-    config.wrapper.append(`
-<div id="iOSAlert">
-<div class="containers hidAnim">
-<p class="headers">${config.headers}</p>
-<p class="messages">${config.messages}</p>
-<div class="actions">${actions}</div>
-</div>
-</div>
-`);
-    if (config.closable) $("#iOSAlert").prepend('<div class="closable"></div>');
-    $("#iOSAlert")
-      .fadeIn("fast", function () {
-        $(this).children(".containers").removeClass("hidAnim");
-      })
-      .css("display", "flex");
-    $(document).on("click", "#iOSAlert .action", function (e) {
-      let action = config.actions[$(e.currentTarget).index()];
-      if (action.callback && typeof action.callback == "function") {
-        action.callback(e);
-      }
-      if (config.closeOnActions) {
-        $(document).off("click", "#iOSAlert .action");
-        $("#iOSAlert").fadeOut("fast", function () {
-          $(this).remove();
-        });
-      }
-    });
-    if (config.hasOwnProperty("autoclose")) {
-      setTimeout(function () {
-        $(document).off("click", "#iOSAlert .action");
-        $("#iOSAlert").fadeOut("fast", function () {
-          $(this).remove();
-        });
-      }, config.autoclose);
-    }
-    $(document).on("click", "#iOSAlert .closable", function () {
-      $(document).off("click", "#iOSAlert .action");
-      $("#iOSAlert").fadeOut("fast", function () {
-        $(this).remove();
-      });
-    });
-  }
 
   //Maps App
   function maps() {
@@ -961,59 +879,256 @@ const updateBattery = () => {
 setInterval(updateBattery, 60000);
 updateBattery();
 
-function startStory() {
-  setTimeout(() => {
-    $(".incomingCall").removeClass("hidden");
+function alertiOS(config) {
+  if ($("#iOSAlert").length || $(".mainScreen").hasClass("locked"))
+    return false;
+  config = jQuery.extend(
+    {
+      wrapper: $(".iphone .blackBorder"),
+      actions: [
+        {
+          text: "Accept",
+          warning: true,
+          // callback: function(){console.log('callback accept')}
+        },
+        {
+          text: "Cancel",
+          warning: false,
+          // callback: function () { console.log('callback cancel') }
+        },
+      ],
+      closable: false,
+      closeOnActions: true,
 
-    $(".incomingCall").touchMov({
-      mov: "y",
-      movUp: function (e) {
-        $(e.currentTarget).addClass("hidden");
-        console.log("up");
-      },
+      hide: false,
+    },
+    config
+  );
+  var actions = "";
+  if (config.actions) {
+    $.each(config.actions, function (k, action) {
+      actions += `<div class="action ${action.warning ? "warning" : ""}">${
+        action.text
+      }</div>`;
     });
+  }
+  if (config.hide) {
+    $(document).off("click", "#iOSAlert .action");
+    $("#iOSAlert").fadeOut(function () {
+      $(this).remove();
+    });
+    return false;
+  }
+  config.wrapper.append(`
+<div id="iOSAlert">
+<div class="containers hidAnim">
+<p class="headers">${config.headers}</p>
+<p class="messages">${config.messages}</p>
+<div class="actions">${actions}</div>
+</div>
+</div>
+`);
+  if (config.closable) $("#iOSAlert").prepend('<div class="closable"></div>');
+  $("#iOSAlert")
+    .fadeIn("fast", function () {
+      $(this).children(".containers").removeClass("hidAnim");
+    })
+    .css("display", "flex");
+  $(document).on("click", "#iOSAlert .action", function (e) {
+    let action = config.actions[$(e.currentTarget).index()];
+    if (action.callback && typeof action.callback == "function") {
+      action.callback(e);
+    }
+    if (config.closeOnActions) {
+      $(document).off("click", "#iOSAlert .action");
+      $("#iOSAlert").fadeOut("fast", function () {
+        $(this).remove();
+      });
+    }
+  });
+  if (config.hasOwnProperty("autoclose")) {
+    setTimeout(function () {
+      $(document).off("click", "#iOSAlert .action");
+      $("#iOSAlert").fadeOut("fast", function () {
+        $(this).remove();
+      });
+    }, config.autoclose);
+  }
+  $(document).on("click", "#iOSAlert .closable", function () {
+    $(document).off("click", "#iOSAlert .action");
+    $("#iOSAlert").fadeOut("fast", function () {
+      $(this).remove();
+    });
+  });
+}
+
+function startStory1() {
+  setTimeout(() => {
+    $(".incomingCall1").removeClass("hidden");
+
+    ring_music = document.querySelector(".music-ring");
+    setTimeout(() => {
+      ring_music.play();
+    }, 300);
+
+    // $(".incomingCall1").touchMov({
+    //   mov: "y",
+    //   movUp: function (e) {
+    //     $(e.currentTarget).addClass("hidden");
+    //   },
+    // });
   }, 500);
 }
 
-function startCall() {
-  $(".unanswered-call").addClass("hidden");
-  $(".answered-call").removeClass("hidden");
-  $(".timer").removeClass("hidden");
-  document.getElementById("callStatus").textContent = "Connected";
+function startCall1() {
+  $(".unanswered-call-1").addClass("hidden");
+  $(".answered-call-1").removeClass("hidden");
+  $(".timer-1").removeClass("hidden");
+  document.getElementById("callStatus1").textContent = "Connected";
+  ring_music.pause();
 
   totalSeconds = 0; // Reset timer
-  callInterval = setInterval(setTime, 1000); // Start the timer
+  callInterval = setInterval(() => setTime(1), 1000); // Start the timer
 
-  music_1 = document.querySelector(".music-element");
+  music_1 = document.querySelector(".music-1");
   // start audio
   setTimeout(() => {
     music_1.play();
 
     setTimeout(() => {
-      showCallNotification();
-
-      setTimeout(() => hideCallNotification(), 5000);
-    }, 2000);
+      showCallNotification(1);
+      setTimeout(() => hideCallNotification(1), 7000);
+    }, 4000);
   }, 500);
 }
 
-function endCall() {
+function endCall(id) {
   clearInterval(callInterval); // Stop the timer
-  $(".answered-call").addClass("hidden");
-  $(".unanswered-call").removeClass("hidden");
 
-  music_1 = document.querySelector(".music-element");
-
-  music_1.pause();
+  music = document.querySelector(".music-" + id);
+  music.pause();
 
   setTimeout(() => {
-    $(".incomingCall").addClass("hidden");
+    $(".answered-call-" + id).addClass("hidden");
+    $(".unanswered-call-" + id).removeClass("hidden");
+    $(".incomingCall" + id).addClass("hidden");
+    totalSeconds = -1;
+    setTime(id);
+
+    alertiOS({
+      headers: "Was that call a scam?",
+      messages:
+        "Help us protect you and others by sharing this call with our database. Your contribution can enhance our detection capabilities.",
+      actions: [
+        {
+          text: "Upload",
+          warning: true,
+          callback: function () {
+            alertiOS({
+              headers: "Successfully Uploaded!",
+              messages:
+                "Help us protect you and others by sharing this call with our database. Your contribution can enhance our detection capabilities.",
+              actions: [
+                {
+                  text: "Close",
+                },
+              ],
+            });
+          },
+        },
+        {
+          text: "Do Not Upload",
+        },
+      ],
+    });
+  }, 100);
+}
+
+function startStory2() {
+  setTimeout(() => {
+    $(".incomingCall2").removeClass("hidden");
+
+    ring_music = document.querySelector(".music-ring");
+    setTimeout(() => {
+      ring_music.play();
+    }, 300);
+
+    // $(".incomingCall2").touchMov({
+    //   mov: "y",
+    //   movUp: function (e) {
+    //     $(e.currentTarget).addClass("hidden");
+    //   },
+    // });
   }, 500);
 }
 
-function setTime() {
+function startCall2() {
+  $(".unanswered-call-2").addClass("hidden");
+  $(".answered-call-2").removeClass("hidden");
+  $(".timer-2").removeClass("hidden");
+  document.getElementById("callStatus2").textContent = "Connected";
+  ring_music.pause();
+
+  totalSeconds = 0; // Reset timer
+  callInterval = setInterval(() => setTime(2), 1000); // Start the timer
+
+  music_2 = document.querySelector(".music-2");
+  // start audio
+  setTimeout(() => {
+    music_2.play();
+
+    setTimeout(() => {
+      showCallNotification(2);
+
+      setTimeout(() => hideCallNotification(2), 8000);
+    }, 4000);
+  }, 500);
+}
+
+function startStory3() {
+  setTimeout(() => {
+    $(".incomingCall3").removeClass("hidden");
+
+    ring_music = document.querySelector(".music-ring");
+    setTimeout(() => {
+      ring_music.play();
+    }, 300);
+
+    // $(".incomingCall3").touchMov({
+    //   mov: "y",
+    //   movUp: function (e) {
+    //     $(e.currentTarget).addClass("hidden");
+    //   },
+    // });
+  }, 500);
+}
+
+function startCall3() {
+  $(".unanswered-call-3").addClass("hidden");
+  $(".answered-call-3").removeClass("hidden");
+  $(".timer-3").removeClass("hidden");
+  document.getElementById("callStatus3").textContent = "Connected";
+  ring_music.pause();
+
+  totalSeconds = 0; // Reset timer
+  callInterval = setInterval(() => setTime(3), 1000); // Start the timer
+
+  music_3 = document.querySelector(".music-3");
+  // start audio
+  setTimeout(() => {
+    music_3.play();
+
+    setTimeout(() => {
+      showCallNotification(3);
+
+      setTimeout(() => hideCallNotification(3), 8000);
+    }, 4000);
+  }, 500);
+}
+
+function setTime(id) {
   ++totalSeconds;
-  document.getElementById("timer").innerHTML =
+  document.getElementById("timer-" + id).innerHTML =
     pad(parseInt(totalSeconds / 60)) + ":" + pad(totalSeconds % 60);
 }
 
@@ -1026,14 +1141,14 @@ function pad(val) {
   }
 }
 
-function showCallNotification() {
-  var notification = document.getElementById("callNotification");
+function showCallNotification(id) {
+  var notification = document.getElementById("callNotification" + id);
   notification.classList.remove("hidden");
   notification.classList.add("visible");
 }
 
-function hideCallNotification() {
-  var notification = document.getElementById("callNotification");
+function hideCallNotification(id) {
+  var notification = document.getElementById("callNotification" + id);
   notification.classList.remove("visible");
   notification.classList.add("hidden");
 }
